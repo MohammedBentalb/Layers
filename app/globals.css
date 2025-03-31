@@ -2,20 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    overflow: clip;
+    overflow-y: visible;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .container {
+    @apply mx-auto px-4 md:px-8 lg:px-16;
+  }
+  .side-fade {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      white 20%,
+      white 80%,
+      transparent
+    );
+  }
+  .top-fade {
+    mask-image: linear-gradient(
+      to top,
+      transparent,
+      white 20%,
+      white 80%,
+      transparent
+    );
+  }
+  .clickEffect {
+    @apply mt-1 outline-2 outline-offset-2 outline-lime-400;
+  }
 }
