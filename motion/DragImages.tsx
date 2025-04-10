@@ -11,5 +11,18 @@ export function DragImages<T extends ElementType>({
 }) {
   // @ts-expect-error err
   const Component = as ? motion[as] : motion.div;
-  return <Component drag dragSnapToOrigin {...props} />;
+  const { y, x } = props;
+  return (
+    <Component
+      {...props}
+      initial={{ opacity: 0, translateX: x, translateY: y }}
+      animate={{ opacity: 100, translateX: 0, translateY: 0 }}
+      transition={{
+        duration: 1,
+      }}
+      drag
+      dragSnapToOrigin
+      {...props}
+    />
+  );
 }
